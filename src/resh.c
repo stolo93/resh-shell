@@ -14,8 +14,9 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <string.h>
 
-#define DEBUG
+// #define DEBUG
 
 int main(int argc, char ** argv)
 {
@@ -27,18 +28,28 @@ int main(int argc, char ** argv)
 	create_args(cur_arguments);
 
     //the main loop of shell
-	//TODO problem with eof
     do {
 		//print promt
 		printf("%s @ %s -> ", getenv("USER"), getcwd(NULL, 0));
 
 		//get input
 		if (readLine(&line, &line_len, fin) == EOF){
-			exit = true;
+			break;
 		}
+
+#ifdef DEBUG
+	printf("line: %s_\n", line);
+#endif
 
 		//parse input
 		parseArgs(line, &cur_arguments);
+
+#ifdef DEBUG
+	for (int i = 0; i < cur_arguments.args_count; i++){
+		printf("ARG%d = %s\n", i, cur_arguments.args[i]);
+	}
+	printf("ending arg: %p\n", cur_arguments.args[cur_arguments.args_count]);
+#endif
 
 		//check for command and run it
 		
@@ -46,8 +57,11 @@ int main(int argc, char ** argv)
 		if (!executeProgram(&cur_arguments)) {
 			exit = true;
 		}
-
+		
 	} while(!exit);
+	
 
+	free(line);
+	fclose(fin);
 	return EXIT_SUCCESS;
 }

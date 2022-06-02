@@ -1,7 +1,7 @@
 /**
- * @file rsh.h
+ * @file resh.h
  * @author Samuel Stolarik (stud.fit.vutbr.cz)
- * @brief rsh shell API
+ * @brief resh shell API
  * @version 0.1
  * @date 2022-05-31
  * 
@@ -9,8 +9,8 @@
  * 
  */
 
-#ifndef _RSH_H
-#define _RSH_h
+#ifndef _resh_H
+#define _resh_h
 
 
-#endif //_RSH_H
+#endif //_resh_H
