@@ -14,8 +14,9 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <string.h>
 
-#define DEBUG
+// #define DEBUG
 
 int main(int argc, char ** argv)
 {
@@ -24,30 +25,41 @@ int main(int argc, char ** argv)
 	size_t line_len = 0;
 	FILE * fin = stdin;
 
-	create_args(cur_arguments);
+	create_prog_info(cur_program);
 
     //the main loop of shell
-	//TODO problem with eof
     do {
 		//print promt
 		printf("%s @ %s -> ", getenv("USER"), getcwd(NULL, 0));
 
 		//get input
 		if (readLine(&line, &line_len, fin) == EOF){
-			exit = true;
+			break;
 		}
 
+#ifdef DEBUG
+	printf("line: %s_\n", line);
+#endif
+
 		//parse input
-		parseArgs(line, &cur_arguments);
+		parseArgs(line, &cur_program);
+
+#ifdef DEBUG
+	for (int i = 0; i < cur_program.args_count; i++){
+		printf("ARG%d = %s\n", i, cur_program.args[i]);
+	}
+	printf("ending arg: %p\n", cur_program.args[cur_program.args_count]);
+#endif
 
 		//check for command and run it
 		
 		//or fork & exec
-		if (!executeProgram(&cur_arguments)) {
-			exit = true;
-		}
+		executeProgram(&cur_program);
 
 	} while(!exit);
+	
 
+	free(line);
+	fclose(fin);
 	return EXIT_SUCCESS;
 }
