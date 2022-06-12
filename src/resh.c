@@ -24,6 +24,7 @@ int main(int argc, char ** argv)
 	char * line = NULL;
 	size_t line_len = 0;
 	FILE * fin = stdin;
+	int cmd_index;
 
 	create_prog_info(cur_program);
 
@@ -52,6 +53,11 @@ int main(int argc, char ** argv)
 #endif
 
 		//check for command and run it
+		cmd_index = findBuiltin(cur_program.args[0]);
+		if (cmd_index != -1){
+			runBuiltin(cmd_index, cur_program.args);
+			continue;
+		}
 		
 		//or fork & exec
 		executeProgram(&cur_program);
