@@ -22,6 +22,7 @@
  */
 char * builtin_names[] = {
     "help",
+    "exit",
 };
 
 /**
@@ -30,6 +31,7 @@ char * builtin_names[] = {
  */
 int (*builtin_fns[])(char **) = {
     resh_help,
+    resh_exit,
 };
 
 
@@ -75,3 +77,7 @@ int resh_help(char ** args)
     return 0;
 }
 
+int resh_exit(char ** args)
+{
+    exit(EXIT_SUCCESS);
+}

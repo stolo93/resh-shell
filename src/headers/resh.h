@@ -22,5 +22,11 @@
  */
 int resh_help(char **);
 
+/**
+ * @brief Exit the shell
+ * 
+ * @return no_return
+ */
+int resh_exit(char **);
 
 #endif //_resh_H
