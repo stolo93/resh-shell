@@ -29,4 +29,11 @@ int resh_help(char **);
  */
 int resh_exit(char **);
 
+/**
+ * @brief change working directory
+ * 
+ * @return int 
+ */
+
+int resh_cd(char **);
 #endif //_resh_H
