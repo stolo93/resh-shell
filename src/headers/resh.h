@@ -12,5 +12,15 @@
 #ifndef _resh_H
 #define _resh_h
 
+//BUILTIN FUNCTIONS
+
+/**
+ * @brief Print shell help
+ * 
+ * @todo //TODO text formating
+ * @return int 
+ */
+int resh_help(char **);
+
 
 #endif //_resh_H
