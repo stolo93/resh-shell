@@ -11,6 +11,8 @@
 #ifndef _resh_PRIVATE_H
 #define _resh_PRIVATE_H
 
+#include "resh.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
@@ -82,5 +84,33 @@ redirection_t getRedirType(char * line);
  * @return int 
  */
 int executeProgram(program_t * prog_info);
+
+
+//--------BUILTIN COMMANDS---------------
+
+/**
+ * @brief Look for @p name builtin and return it's index
+ * 
+ * @param name 
+ * @return Index if found, -1 if not
+ */
+int findBuiltin(char * name);
+
+/**
+ * @brief Get the Builtin functions Count 
+ * 
+ * @return Number of builtin functions
+ */
+int builtinLenght(void);
+
+/**
+ * @brief Run a command
+ * Call a function from the array of built-in functions at @p index and pass its @p args.
+ * 
+ * @param index 
+ * @param args 
+ * @return Return value of the command ran.
+ */
+int runBuiltin(int index, char ** args);
 
 #endif //_resh_PRIVATE_H
