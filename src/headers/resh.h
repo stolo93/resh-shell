@@ -13,12 +13,4 @@
 #define _resh_h
 
 
-//BUILTIN FUNCTIONS
-
-int resh_help(char **);
-
-int resh_exit(char **);
-
-int resh_cd(char **);
-
 #endif //_resh_H

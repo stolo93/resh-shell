@@ -21,9 +21,7 @@
  * 
  */
 char * builtin_names[] = {
-    "help",
-    "exit",
-    "cd"
+
 };
 
 /**
@@ -31,9 +29,7 @@ char * builtin_names[] = {
  * 
  */
 int (*builtin_fns[])(char **) = {
-    resh_help,
-    resh_exit,
-    resh_cd
+
 };
 
 
@@ -64,21 +60,5 @@ int runBuiltin(int index, char ** args)
     return builtin_fns[index](args);
 }
 
-//--------BUILT-IN FUNCTIONS-----------
 
-int resh_help(char ** args)
-{
-    return 0;
-}
-
-int resh_exit(char ** args)
-{
-    exit(EXIT_SUCCESS);
-}
-
-int resh_cd(char ** args)
-{
-    return 0;
-
-}
 
