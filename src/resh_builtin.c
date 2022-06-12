@@ -21,7 +21,7 @@
  * 
  */
 char * builtin_names[] = {
-
+    "help",
 };
 
 /**
@@ -29,7 +29,7 @@ char * builtin_names[] = {
  * 
  */
 int (*builtin_fns[])(char **) = {
-
+    resh_help,
 };
 
 
@@ -61,4 +61,17 @@ int runBuiltin(int index, char ** args)
 }
 
 
+//--------BUILT-IN FUNCTIONS--------
+
+int resh_help(char ** args)
+{    printf("Resh shell\nBuilt just as a experiment.\nType in a command and hit enter to run it.\nTo exit the shell either use \"exit\" or CTRL+D.\n\nList of built-in commands:\n");
+    
+    int lenght = builtinLenght();
+
+    for (int i = 0; i < lenght; i++){
+        printf("\t- %s\n", builtin_names[i]);
+    }
+
+    return 0;
+}
 
