@@ -13,6 +13,9 @@
 #include "headers/resh_private.h"
 
 #include <string.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #define NOT_FOUND -1
 
@@ -23,6 +26,7 @@
 char * builtin_names[] = {
     "help",
     "exit",
+    "cd",
 };
 
 /**
@@ -32,6 +36,7 @@ char * builtin_names[] = {
 int (*builtin_fns[])(char **) = {
     resh_help,
     resh_exit,
+    resh_cd,
 };
 
 
@@ -80,4 +85,26 @@ int resh_help(char ** args)
 int resh_exit(char ** args)
 {
     exit(EXIT_SUCCESS);
+}
+
+int resh_cd(char ** args)
+{
+    char * dir;
+    if (args[1] == NULL){
+        dir = getenv("HOME");
+    }
+    else if (strcmp(args[1], "~") == 0){
+        dir = getenv("HOME");
+    }
+    else {
+        dir = args[1];
+    }
+
+
+    if (chdir(dir) == -1){
+        perror(NULL);
+        return 1;
+    }
+    
+    return 0;
 }
