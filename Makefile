@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS  = -Wall -Werror
-OBJS = resh.o resh_input.o resh_execute.o resh_builtin.o
+OBJS = resh.o resh_input.o resh_execute.o resh_builtin.o resh_signals.c
 VPATH = src:
 
 all: dependencies resh

@@ -113,4 +113,23 @@ int builtinLenght(void);
  */
 int runBuiltin(int index, char ** args);
 
+
+//----------SIGNAL HANDLERS---------
+/**
+ * @brief ignore signals listed
+ * 
+ * @param signal 
+ * @param ... 
+ */
+void ignoreSignals(int sig_count, ...);
+
+/**
+ * @brief reset signal handlers to default
+ * 
+ * @param signal 
+ * @param ... 
+ */
+void resetSignals(int sig_count, ...);
+
+
 #endif //_resh_PRIVATE_H
