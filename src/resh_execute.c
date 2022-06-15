@@ -26,6 +26,8 @@ int executeProgram(program_t * prog_info)
     if (p1 == 0)
     {
         //child
+        resetSignals(1, SIGINT);
+                
         execvp(prog_info->args[0], prog_info->args);
         perror(NULL);
         exit(EXIT_FAILURE); //exec only returns in case of error

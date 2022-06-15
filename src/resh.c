@@ -15,6 +15,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
+#include <signal.h>
 
 // #define DEBUG
 
@@ -27,6 +28,8 @@ int main(int argc, char ** argv)
 	int cmd_index;
 
 	create_prog_info(cur_program);
+
+	ignoreSignals(1, SIGINT);
 
     //the main loop of shell
     do {
