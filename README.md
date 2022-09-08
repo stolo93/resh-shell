@@ -10,5 +10,5 @@ To build the shell, simply run make in the project's root directory.
 
 - Reading input
 - Running programs
-- No commands yet
+- Commands: cd, exit, help
 - Arguments for programs are parsed based on spaces
