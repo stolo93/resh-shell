@@ -15,4 +15,4 @@ To build the shell, simply run make in the project's root directory.
 
 Testovanie
 
-ahoj
+cauko
