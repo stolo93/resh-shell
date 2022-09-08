@@ -14,3 +14,5 @@ To build the shell, simply run make in the project's root directory.
 - Arguments for programs are parsed based on spaces
 
 Testovanie
+
+ahoj
