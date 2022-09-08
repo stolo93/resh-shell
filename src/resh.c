@@ -38,19 +38,8 @@ int main(int argc, char ** argv)
 			break;
 		}
 
-#ifdef DEBUG
-	printf("line: %s_\n", line);
-#endif
-
 		//parse input
 		parseArgs(line, &cur_program);
-
-#ifdef DEBUG
-	for (int i = 0; i < cur_program.args_count; i++){
-		printf("ARG%d = %s\n", i, cur_program.args[i]);
-	}
-	printf("ending arg: %p\n", cur_program.args[cur_program.args_count]);
-#endif
 
 		//check for command and run it
 		cmd_index = findBuiltin(cur_program.args[0]);
