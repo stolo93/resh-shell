@@ -27,8 +27,9 @@ int executeProgram(program_t * prog_info)
     {
         //child
         execvp(prog_info->args[0], prog_info->args);
+        //exec only returns in case of error
         perror(NULL);
-        exit(EXIT_FAILURE); //exec only returns in case of error
+        exit(EXIT_FAILURE);
     }
     else if (p1 == -1)
     {
@@ -47,5 +48,4 @@ int executeProgram(program_t * prog_info)
     else {
         return WEXITSTATUS(stat); //return value of the child proces
     }
-
 }
