@@ -16,7 +16,6 @@
 #include <string.h>
 #include <ctype.h>
 
-#define MAX_ARG_LEN 128
 
 size_t readLine(char ** lineptr, size_t * lenptr, FILE * fin)
 {
@@ -28,7 +27,7 @@ size_t readLine(char ** lineptr, size_t * lenptr, FILE * fin)
             return EOF;
         }
         else {
-            perror("Readline.");
+            perror("Readline:");
             exit(EXIT_FAILURE);
         }        
     }

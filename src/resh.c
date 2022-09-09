@@ -28,27 +28,28 @@ int main(int argc, char ** argv)
 
 	create_prog_info(cur_program);
 
-    //the main loop of shell
+//---------The infinite loop of shell----------
+
     do {
 		//print promt
 		printf("%s @ %s -> ", getenv("USER"), getcwd(NULL, 0));
 
-		//get input
+		//read input
 		if (readLine(&line, &line_len, fin) == EOF){
 			break;
 		}
 
-		//parse input
+		//parse input into program arguments
 		parseArgs(line, &cur_program);
 
-		//check for command and run it
+		//check whether program is a command and if so run it
 		cmd_index = findBuiltin(cur_program.args[0]);
 		if (cmd_index != -1){
 			runBuiltin(cmd_index, cur_program.args);
 			continue;
 		}
 		
-		//or fork & exec
+		//if program is not a command it is an executable, therefore fork & exec
 		executeProgram(&cur_program);
 
 	} while(!exit);
